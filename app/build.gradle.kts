@@ -10,6 +10,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
+        android.buildFeatures.buildConfig = true
         applicationId = "com.pietrantuono.myapplication"
         minSdk = 24
         targetSdk = 34
@@ -20,6 +21,8 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        val API_KEY: String by project
+        buildConfigField("String", "API_KEY", API_KEY)
     }
 
     buildTypes {
@@ -49,6 +52,10 @@ android {
 }
 
 dependencies {
+    // Compose.
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+
     // Hilt
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-android-compiler:2.50")
@@ -57,6 +64,9 @@ dependencies {
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
 
 
     implementation("androidx.core:core-ktx:1.12.0")

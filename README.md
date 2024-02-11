@@ -1,0 +1,2 @@
+- don't forget the type adapter
+- don't forget the permission

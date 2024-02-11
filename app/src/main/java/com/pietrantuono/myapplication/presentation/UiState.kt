@@ -1,6 +1,11 @@
 package com.pietrantuono.myapplication.presentation
 
-sealed class UiState {
+import com.pietrantuono.myapplication.data.network.Movie
 
-    object Loading : UiState()
+sealed class UiState {
+    data object Loading : UiState()
+
+    data class Success(val movies: List<Movie> = emptyList()) : UiState()
+
+    data class Error(val message: String = "") : UiState()
 }
